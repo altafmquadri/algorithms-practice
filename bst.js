@@ -36,13 +36,29 @@ class BinarySearchTree {
         }
     }
 
-
-    
+    find(val) {
+        let current = this.root
+        const findVal = (c) => {
+            if (c === null) return false
+            if (c.val === val) {
+                return true
+            }
+            if (val < c.val) {
+                c = c.left
+                return findVal(c)
+            } 
+            if (val > c.val) {
+                c = c.right
+                return findVal(c)
+            }
+        }
+        return findVal(current)
+    }
 } //end BST
 
 const bst = new BinarySearchTree()
 bst.insert(30)
 bst.insert(20)
-bst.insert(10)
-//trying to add 60 and it it loops and I can't figure out where the loop is
+bst.insert(60)
+
 
