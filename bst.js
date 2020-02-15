@@ -77,21 +77,62 @@ class BinarySearchTree {
         }
         return visited
     }
+
+    DFSPreO = () => {
+        let visited = []
+        let current = this.root
+
+        const traverse = (c) => {
+            visited.push(c.val)
+            if (c.left !== null) traverse(c.left)
+            if (c.right !== null) traverse(c.right)
+        }
+        traverse(current)
+        return visited
+    }
+
+    DFSPostO = () => {
+        let visited = []
+        let current = this.root
+
+        const traverse = (c) => {
+            if (c.left !== null) traverse(c.left)
+            if (c.right !== null) traverse(c.right)
+            visited.push(c.val)
+        }
+        traverse(current)
+        return visited
+    }
+
+    DFSInO = () => {
+        let visited = []
+        let current = this.root
+
+        const traverse = (c) => {
+            if (c.left !== null) traverse(c.left)
+            visited.push(c.val)
+            if (c.right !== null) traverse(c.right)
+        }
+        traverse(current)
+        return visited
+    }
+
+
 } //end BST
 
 const bst = new BinarySearchTree()
-// bst.insert(10)
-// bst.insert(6)
-// bst.insert(15)
-// bst.insert(3)
-// bst.insert(8)
-// bst.insert(20)
-
-bst.insert(30)
-bst.insert(20)
-bst.insert(60)
 bst.insert(10)
-bst.insert(40)
+bst.insert(6)
+bst.insert(15)
+bst.insert(3)
+bst.insert(8)
+bst.insert(20)
+
+// bst.insert(30)
+// bst.insert(20)
+// bst.insert(60)
+// bst.insert(10)
+// bst.insert(40)
 
 console.log(bst.BFS()) //(5) [30, 20, 60, 10, 40]
 
